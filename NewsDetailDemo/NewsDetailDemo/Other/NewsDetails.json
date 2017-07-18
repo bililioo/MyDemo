@@ -1,0 +1,53 @@
+{
+  "data" : {
+    "id" : 5900576,
+    "comments" : 0,
+    "isPraise" : false,
+    "thumbnailImage" : {
+      "data" : [
+        {
+          "originalPath" : "http:\/\/inews.gtimg.com\/newsapp_match\/0\/1812591064\/0",
+          "listThumbnail" : "\/M00\/11\/2D\/wKhkHFlt6mGAJtX8AAAWloR4_gU031.png",
+          "contentThumbnail" : "http:\/\/182.245.126.226:8329\/G1\/M00\/11\/4E\/wKhkHVlt6mGASEULAABPGDU_knw301.png",
+          "width" : 550,
+          "tag" : "<!--IMG#0-->",
+          "height" : 400
+        },
+        {
+          "originalPath" : "http:\/\/inews.gtimg.com\/newsapp_match\/0\/1812591889\/0",
+          "listThumbnail" : "\/M00\/D3\/D0\/wKhkGllt6mKAfr1KAAAZuHL9Ht0991.png",
+          "contentThumbnail" : "http:\/\/182.245.126.226:8329\/G1\/M00\/11\/2D\/wKhkHFlt6mKAITt5AABVJc5Pf8s756.png",
+          "width" : 550,
+          "tag" : "<!--IMG#1-->",
+          "height" : 400
+        },
+        {
+          "originalPath" : "http:\/\/inews.gtimg.com\/newsapp_match\/0\/1812592466\/0",
+          "listThumbnail" : "\/M00\/D3\/D0\/wKhkGllt6mKAXqciAAAcoMBOmVQ600.png",
+          "contentThumbnail" : "http:\/\/182.245.126.226:8329\/G1\/M00\/D3\/D0\/wKhkGllt6mKAK0YBAABwWhYI_pU427.png",
+          "width" : 550,
+          "tag" : "<!--IMG#2-->",
+          "height" : 400
+        }
+      ],
+      "statusCode" : 0,
+      "message" : null,
+      "requestTime" : 0,
+      "total" : 3
+    },
+    "praises" : 0,
+    "url" : "http:\/\/kuaibao.qq.com\/s\/20170718A066H200",
+    "time" : 1500375644000,
+    "title" : "火箭老板想要出售球队 专家建议姚明不当主席当火箭老板",
+    "shareUrl" : "http:\/\/share.urundata.com:38012\/Sight.H5\/Home\/Article?ArticleID=5900576",
+    "siteName" : "天天快报客户端",
+    "articleType" : 0,
+    "categoryID" : 10,
+    "isFavorites" : false,
+    "content" : "<p>据来自美国媒体的消息称，火箭老板亚历山大今天表示，打算出售球队，他的这一决定也引起了美媒体热聊，美国专家阿迪-约瑟夫就撰文表示希望碧昂斯姚明适合接手球队。<\/p><p><p><!--IMG#0--><\/p><\/p><p>火箭距离上次拿下总冠军奖杯后已经过了22年，亚历山大这次准备让其他人试试看。火箭将被出售的消息震惊了NBA联盟，但解决的办法很简单，那就是让碧昂丝接手火箭。<\/p><p>碧昂丝是最著名的休斯顿人之一，她在表演中也不断强调自己来自休城。同时她是火箭球迷，在很多场合包括自己的演唱会上身穿火箭相关T恤。甚至她还有一首歌叫作“火箭”。<\/p><p><p><!--IMG#1--><\/p><\/p><p>另外，也有专家建议曾在火箭队效力的姚明斥资将球队买下。虽然亚历山大曾经付给过姚明火箭期间9400万美元的薪水，但是这位巨人却把火箭带成如此家喻户晓的球队，因为他的出色表现，中国变成了一个痴迷篮球的国度。<\/p><p>现在，火箭仍然可以从姚明这方面受益，但是必须让姚明进入股东，让他有数倍的回报。而姚明的号召力，再加上火箭的名号，或许将是个绝佳的组合。<\/p><p><p><!--IMG#2--><\/p><\/p><p>那么问题就来了，姚明会放弃中国篮协主席不干，而去美国专心搞好火箭吗？那样的话，哈登和周琦就都成了他手下的球员。<\/p>"
+  },
+  "statusCode" : 200,
+  "message" : "OK",
+  "requestTime" : 9,
+  "total" : 0
+}

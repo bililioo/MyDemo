@@ -1,0 +1,92 @@
+
+<html>
+    <head>
+        <style type='text/css'>
+            h3{text-align:left;font-size:"!_titleFontSize";font-weight:bold;color:#333333;margin-bottom:5px}
+            .subTitle{width=300px;font-size:12px;}
+            .subTitle p{display:inline;}
+            #source{margin-left:16px;color:#3380cd}
+            #time{color:#999999} .content{margin-top:-10px}
+            </style>
+    </head>
+    <script>
+        window.onerror = function(err) {
+            log('window.onerror: ' + err)
+        }
+
+    //bridge的一些配置信息
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function(bridge) {
+                                 
+                                 /* Initialize your app here */
+                                 //注册js方法，供oc调用
+                                 bridge.registerHandler('getImage', function(data, responseCallback) {
+                                                        
+                                                        var dic = data;
+                                                        
+                                                        //获取img标签的id属性
+                                                        var imageIdStr = dic.id;
+                                                        
+                                                        //获取图片的本地缓存路径
+                                                        var imageLocaPath = dic.imageLocalPath;
+                                                        
+                                                        //alert(imageLocaPath)
+                                                    
+                                                        //获取默认图片的路径
+                                                        var defaultImagePath = dic.defaultImagePath;
+
+                                                        //通过id选择器方法获取Doom元素
+                                                        element = document.getElementById(imageIdStr);
+                                                        
+                                                        var msg = "替换默认图失败";
+                                                        
+                                                        //src包含默认图片路径
+                                                        if(element.src.match(defaultImagePath))
+                                                        {
+                                                            msg = "替换默认图成功";
+                                                            //使用本地缓存的图片路径替换src路径
+                                                            element.src = imageLocaPath;
+                                                        }
+
+                                                        //回调oc块
+                                                        var resultArr= new Array();
+                                                        resultArr[0] = data;
+                                                        resultArr[1] = msg;
+                                                        
+                                                        responseCallback(resultArr)
+                                                        
+                                                        })
+                                        })
+                                 
+             //图片点击JS事件
+             function imageClick(img) {
+                 
+                 //获取图片地址
+                 var data = img.id;
+
+                 //调用oc方法，处理图片点击事件
+                 window.WebViewJavascriptBridge.callHandler('imageClickHandler', data ,function responseCallback(responseData) {
+                                                            console.log("JS received response:", responseData)
+                                                            
+                                                            })
+             }
+    
+    </script>
+    
+    <body><mainView></body>
+
+</html>
+
+
+
+
