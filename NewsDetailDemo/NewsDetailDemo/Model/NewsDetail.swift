@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct NewsDetail {
     
@@ -30,6 +31,18 @@ struct NewsDetail {
     
     /// 图片JSON字符串
     var originalPath: [String: String] = [:]
+    
+    init() {
+        
+        let jsonPath = Bundle.main.path(forResource: "NewsDetail", ofType: "json")
+        var json = (try? String.init(contentsOfFile: jsonPath!, encoding: String.Encoding.utf8)) ?? ""
+        
+        guard json == "" else {
+            return
+        }
+        json = "temp"
+        
+    }
 }
 
 struct NewsImage {
@@ -49,4 +62,7 @@ struct NewsImage {
     /// 缩略图路径
     var thumbnailPath: String = ""
     
+    init(_ json: JSON) {
+        
+    }
 }
