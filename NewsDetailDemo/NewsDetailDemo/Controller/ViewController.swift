@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let model = NewsDetail.init()
+        print(model.imageArr[0].originalPath)
     }
 
     override func didReceiveMemoryWarning() {

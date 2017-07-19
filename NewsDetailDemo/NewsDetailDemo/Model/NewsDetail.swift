@@ -18,7 +18,7 @@ struct NewsDetail {
     var content: String = ""
     
     /// 图片数组
-    var imageArr: Array<String> = []
+    var imageArr: Array<NewsImage> = []
     
     /// 发表时间戳
     var addonStamp: TimeInterval = 0
@@ -29,19 +29,44 @@ struct NewsDetail {
     /// 来源
     var groupName: String = ""
     
-    /// 图片JSON字符串
-    var originalPath: [String: String] = [:]
-    
     init() {
         
-        let jsonPath = Bundle.main.path(forResource: "NewsDetail", ofType: "json")
-        var json = (try? String.init(contentsOfFile: jsonPath!, encoding: String.Encoding.utf8)) ?? ""
+        self.imageArr = Array()
         
-        guard json == "" else {
+        let jsonPath = Bundle.main.path(forResource: "NewsDetail", ofType: "json")
+        let json = (try? String.init(contentsOfFile: jsonPath!, encoding: String.Encoding.utf8)) ?? ""
+        
+        if json.isEmpty {
             return
         }
-        json = "temp"
         
+        let data = json.data(using: String.Encoding.utf8)
+        
+        let dic: [String: Any] = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String : Any]
+        
+    
+        let dic1: [String: Any] = dic["data"] as! [String : Any]
+        
+        let dic2: [String: Any] = dic1["thumbnailImage"] as! [String: Any]
+        let arr: [[String: Any]] = dic2["data"] as! [[String: Any]]
+        
+        
+        for dic: [String: Any] in arr {
+            print(dic)
+            var imgModel = NewsImage()
+            imgModel.thumbnailPath = dic["contentThumbnail"] as! String
+            imgModel.originalPath = dic["originalPath"] as! String
+            imgModel.width = dic["width"] as! Int
+            imgModel.height = dic["height"] as! Int
+            imgModel.ref = dic["tag"] as! String
+            
+            self.imageArr.append(imgModel)
+        }
+        
+        self.addonStamp = dic1["time"]! as! TimeInterval
+        self.content = dic1["content"] as! String
+        self.title = dic1["title"] as! String
+        self.groupName = dic1["siteName"] as! String
     }
 }
 
@@ -62,7 +87,7 @@ struct NewsImage {
     /// 缩略图路径
     var thumbnailPath: String = ""
     
-    init(_ json: JSON) {
+    init() {
         
     }
 }
