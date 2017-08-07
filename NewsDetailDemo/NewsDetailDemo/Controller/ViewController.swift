@@ -14,6 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(mainScrollView)
+        mainScrollView.snp.makeConstraints {
+            $0.bottom.left.right.equalTo(self.view)
+            $0.top.equalTo(self.view).offset(20)
+        }
+        mainScrollView.contentSize = CGSize(width: 0, height: 3000)
+        
+        mainScrollView.addSubview(newsDetailWebView)
+        newsDetailWebView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1)
+        
         let model = NewsDetail.init()
         let width = UIScreen.main.bounds.width
         var tempHtml = try? String(contentsOf: Bundle.main.url(forResource: "ArticleDetail", withExtension: "html")!, encoding: String.Encoding.utf8)
@@ -28,20 +38,15 @@ class ViewController: UIViewController {
         self.view.addSubview(newsDetailWebView)
         newsDetailWebView.loadHTMLString(tempHtml!, baseURL: Bundle.main.bundleURL)
         
-        let h = newsDetailWebView.stringByEvaluatingJavaScript(from: "document.body.scrollHeight")
+//        let h = newsDetailWebView.stringByEvaluatingJavaScript(from: "document.body.scrollHeight")
         
 //        let height = Int(h!)
-        let height = Float(h!)
-        mainScrollView.contentSize = CGSize(width: 0, height: Int(height!))
+//        let height = Float(h!)
+//        mainScrollView.contentSize = CGSize(width: 0, height: Int(height!))
         
-        self.view.addSubview(mainScrollView)
-        mainScrollView.snp.makeConstraints {
-            $0.bottom.left.right.equalTo(self.view)
-            $0.top.equalTo(self.view).offset(20)
-        }
-
-        mainScrollView.addSubview(newsDetailWebView)
-        newsDetailWebView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 667)
+    
+        
+//        newsDetailWebView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 667)
 //        newsDetailWebView.snp.makeConstraints {
 //            $0.left.right.top.equalTo(self.view)
 //            $0.height.equalTo(height!)
@@ -54,6 +59,19 @@ class ViewController: UIViewController {
         
     }
 
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let tempSize = change?[NSKeyValueChangeKey.newKey] as? CGSize else {
+            return
+        }
+        print(tempSize)
+        
+        if tempSize.height > 1 {
+            let height = CGFloat(Double(newsDetailWebView.stringByEvaluatingJavaScript(from: "document.body.offsetHeight") ?? "1")!) + 20
+            newsDetailWebView.frame.size.height = height
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,6 +79,8 @@ class ViewController: UIViewController {
     
     fileprivate lazy var newsDetailWebView: UIWebView = {
         let webView = UIWebView()
+        webView.scrollView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        webView.scrollView.isScrollEnabled = false
         return webView
     }()
 
