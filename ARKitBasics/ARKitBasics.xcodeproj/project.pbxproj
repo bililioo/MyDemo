@@ -14,6 +14,7 @@
 		34ED87B91FDA6C8600D6B68D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34ED87B71FDA6C8600D6B68D /* LaunchScreen.storyboard */; };
 		34ED87C41FDA6C8600D6B68D /* ARKitBasicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED87C31FDA6C8600D6B68D /* ARKitBasicsTests.swift */; };
 		34ED87CF1FDA6C8600D6B68D /* ARKitBasicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED87CE1FDA6C8600D6B68D /* ARKitBasicsUITests.swift */; };
+		34ED87DF1FDA83B600D6B68D /* Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 34ED87DE1FDA83B600D6B68D /* Assets.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		34ED87CA1FDA6C8600D6B68D /* ARKitBasicsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARKitBasicsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34ED87CE1FDA6C8600D6B68D /* ARKitBasicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitBasicsUITests.swift; sourceTree = "<group>"; };
 		34ED87D01FDA6C8600D6B68D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34ED87DE1FDA83B600D6B68D /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Assets.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				34ED87B01FDA6C8600D6B68D /* ViewController.swift */,
 				34ED87B21FDA6C8600D6B68D /* Main.storyboard */,
 				34ED87B51FDA6C8600D6B68D /* Assets.xcassets */,
+				34ED87DE1FDA83B600D6B68D /* Assets.scnassets */,
 				34ED87B71FDA6C8600D6B68D /* LaunchScreen.storyboard */,
 				34ED87BA1FDA6C8600D6B68D /* Info.plist */,
 			);
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34ED87DF1FDA83B600D6B68D /* Assets.scnassets in Resources */,
 				34ED87B91FDA6C8600D6B68D /* LaunchScreen.storyboard in Resources */,
 				34ED87B61FDA6C8600D6B68D /* Assets.xcassets in Resources */,
 				34ED87B41FDA6C8600D6B68D /* Main.storyboard in Resources */,
