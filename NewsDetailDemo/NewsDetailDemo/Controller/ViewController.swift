@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         if tempSize.height > 1 {
             let height = CGFloat(Double(newsDetailWebView.stringByEvaluatingJavaScript(from: "document.body.offsetHeight") ?? "1")!) + 20
             newsDetailWebView.frame.size.height = height
-            
+            mainScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: newsDetailWebView.frame.size.height + 50)
         }
     }
     

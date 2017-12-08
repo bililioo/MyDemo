@@ -3,5 +3,4 @@ use_frameworks!
 
 target 'TableViewDemo' do
     pod 'SnapKit', '~> 3.2.0'
-    pod 'SwiftyJSON'
 end
