@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // MARK: IBOutlets
+    @IBOutlet weak var sceneView: VirtualObjectARView!
+    
+    var focusSquare = FocusSquare()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

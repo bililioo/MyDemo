@@ -64,8 +64,14 @@ class VirtualObjectARView: ARSCNView {
     }
     
     // MARK: Position Testing
-    func virtualObject(at point: CGPoint) -> vir {
-        <#function body#>
+    func virtualObject(at point: CGPoint) -> VirtualObject? {
+        let hitTestOptions: [SCNHitTestOption: Any] = [SCNHitTestOption.boundingBoxOnly: true]
+        
+        let hitTestResults = hitTest(point, options: hitTestOptions)
+        
+        return hitTestResults.lazy.flatMap { result in
+            return VirtualObject.existingObjectContainingNode(result.node)
+        }.first
     }
     
 }
