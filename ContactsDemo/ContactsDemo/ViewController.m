@@ -23,6 +23,7 @@
     
     pvc.peoplePickerDelegate = self;
     
+    
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
     {
         ABAddressBookRef bookRef = ABAddressBookCreate();
@@ -43,6 +44,35 @@
         [self presentViewController:pvc animated:YES completion:nil];
     }
     
+    [self getAll];
+}
+
+- (void)getAll {
+    ABAddressBookRef bookRef = ABAddressBookCreate();
+    NSArray *peoples = (__bridge NSArray *)(ABAddressBookCopyArrayOfAllPeople(bookRef));
+    
+    for (int i = 0; i < peoples.count; i++) {
+        
+        id person = peoples[i];
+        ABRecordRef personRef = (__bridge ABRecordRef)person;
+        
+        CFStringRef firstName = ABRecordCopyValue(personRef, kABPersonFirstNameProperty);
+        CFStringRef lastName = ABRecordCopyValue(personRef, kABPersonLastNameProperty);
+        NSString *fullName = [CFBridgingRelease(lastName) stringByAppendingString:CFBridgingRelease(firstName)];
+        
+        ABMultiValueRef multi = ABRecordCopyValue(personRef, kABPersonPhoneProperty);
+        CFIndex count = ABMultiValueGetCount(multi);
+        for (int j = 0; j < count; j++)
+        {
+            NSString *label = (__bridge_transfer NSString *)ABMultiValueCopyLabelAtIndex(multi, j);
+            NSString *phone = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(multi, j);
+            
+            if (fullName.length == 0) {
+                fullName = [NSString stringWithFormat:@"未命名%d", i];
+            }
+            NSLog(@"%@---%@---%@", fullName, label, phone);
+        }
+    }
 }
 
 // 选择某个联系人时调用
@@ -66,6 +96,8 @@
         NSLog(@"%@---%@", label, phone);
     }
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
